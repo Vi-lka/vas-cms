@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_items_files_grid_items",
+  "info": {
+    "displayName": "FilesGridItem",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "files": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.file",
+      "required": true,
+      "min": 1
+    }
+  }
+}

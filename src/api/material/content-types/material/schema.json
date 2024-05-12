@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "materials",
+  "info": {
+    "singularName": "material",
+    "pluralName": "materials",
+    "displayName": "Materials"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "required": true,
+      "min": 1,
+      "component": "items.files-grid-item"
+    }
+  }
+}
