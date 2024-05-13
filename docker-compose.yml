@@ -26,7 +26,7 @@ services:
       - ./.env:/opt/app/.env
       - ./public/uploads:/opt/app/public/uploads
     ports:
-      - '1337:1337'
+      - '1338:1337'
     networks:
       - vas-net
     depends_on:
@@ -47,7 +47,7 @@ services:
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
 
     ports:
-      - '5432:5432'
+      - '5433:5432'
     networks:
       - vas-net
 
