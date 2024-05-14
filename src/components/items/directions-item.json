@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_items_directions_items",
+  "info": {
+    "displayName": "DirectionsItem",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    }
+  }
+}

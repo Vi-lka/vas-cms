@@ -1,9 +1,9 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ItemsFile extends Schema.Component {
-  collectionName: 'components_items_files';
+export interface ItemsDirectionsItem extends Schema.Component {
+  collectionName: 'components_items_directions_items';
   info: {
-    displayName: 'File';
+    displayName: 'DirectionsItem';
     icon: 'bulletList';
   };
   attributes: {
@@ -12,7 +12,27 @@ export interface ItemsFile extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
+  };
+}
+
+export interface ItemsFile extends Schema.Component {
+  collectionName: 'components_items_files';
+  info: {
+    displayName: 'File';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
     file: Attribute.Media & Attribute.Required;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
   };
 }
 
@@ -62,6 +82,7 @@ export interface ItemsOrgsItem extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'items.directions-item': ItemsDirectionsItem;
       'items.file': ItemsFile;
       'items.files-grid-item': ItemsFilesGridItem;
       'items.orgs-item': ItemsOrgsItem;
