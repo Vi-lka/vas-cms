@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "additional_pages",
+  "info": {
+    "singularName": "additional-page",
+    "pluralName": "additional-pages",
+    "displayName": "AdditionalPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    }
+  }
+}

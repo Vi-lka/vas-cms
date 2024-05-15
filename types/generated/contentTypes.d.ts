@@ -860,6 +860,42 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiAdditionalPageAdditionalPage extends Schema.CollectionType {
+  collectionName: 'additional_pages';
+  info: {
+    singularName: 'additional-page';
+    pluralName: 'additional-pages';
+    displayName: 'AdditionalPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    slug: Attribute.UID<'api::additional-page.additional-page', 'title'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::additional-page.additional-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::additional-page.additional-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDirectionDirection extends Schema.SingleType {
   collectionName: 'directions';
   info: {
@@ -962,6 +998,58 @@ export interface ApiOrgOrg extends Schema.SingleType {
   };
 }
 
+export interface ApiPlacePlace extends Schema.SingleType {
+  collectionName: 'places';
+  info: {
+    singularName: 'place';
+    pluralName: 'places';
+    displayName: 'Place';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    address: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    description: Attribute.Blocks;
+    titleAboutCity: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    imageAboutCity: Attribute.Media & Attribute.Required;
+    descriptionAboutCity: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    additionalLinks: Attribute.Component<'items.additional-place-info', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::place.place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::place.place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProgrammProgramm extends Schema.SingleType {
   collectionName: 'programms';
   info: {
@@ -1020,9 +1108,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::additional-page.additional-page': ApiAdditionalPageAdditionalPage;
       'api::direction.direction': ApiDirectionDirection;
       'api::material.material': ApiMaterialMaterial;
       'api::org.org': ApiOrgOrg;
+      'api::place.place': ApiPlacePlace;
       'api::programm.programm': ApiProgrammProgramm;
     }
   }

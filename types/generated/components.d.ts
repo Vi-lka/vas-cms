@@ -1,5 +1,31 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ItemsAdditionalPlaceInfo extends Schema.Component {
+  collectionName: 'components_items_additional_place_infos';
+  info: {
+    displayName: 'AdditionalPlaceInfo';
+    icon: 'information';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    image: Attribute.Media;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    page: Attribute.Relation<
+      'items.additional-place-info',
+      'oneToOne',
+      'api::additional-page.additional-page'
+    >;
+  };
+}
+
 export interface ItemsDirectionsItem extends Schema.Component {
   collectionName: 'components_items_directions_items';
   info: {
@@ -126,6 +152,7 @@ export interface ItemsProgrammTime extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'items.additional-place-info': ItemsAdditionalPlaceInfo;
       'items.directions-item': ItemsDirectionsItem;
       'items.file': ItemsFile;
       'items.files-grid-item': ItemsFilesGridItem;
