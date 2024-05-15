@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "programms",
+  "info": {
+    "singularName": "programm",
+    "pluralName": "programms",
+    "displayName": "Programm",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.programm-item",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    }
+  }
+}

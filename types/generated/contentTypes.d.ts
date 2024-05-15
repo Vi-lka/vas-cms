@@ -962,6 +962,44 @@ export interface ApiOrgOrg extends Schema.SingleType {
   };
 }
 
+export interface ApiProgrammProgramm extends Schema.SingleType {
+  collectionName: 'programms';
+  info: {
+    singularName: 'programm';
+    pluralName: 'programms';
+    displayName: 'Programm';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    items: Attribute.Component<'items.programm-item', true> &
+      Attribute.Required;
+    description: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::programm.programm',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::programm.programm',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -985,6 +1023,7 @@ declare module '@strapi/types' {
       'api::direction.direction': ApiDirectionDirection;
       'api::material.material': ApiMaterialMaterial;
       'api::org.org': ApiOrgOrg;
+      'api::programm.programm': ApiProgrammProgramm;
     }
   }
 }

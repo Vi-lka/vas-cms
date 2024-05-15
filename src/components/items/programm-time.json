@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_items_programm_times",
+  "info": {
+    "displayName": "ProgrammTime",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "time": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    }
+  }
+}

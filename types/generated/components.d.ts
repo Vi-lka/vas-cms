@@ -79,6 +79,50 @@ export interface ItemsOrgsItem extends Schema.Component {
   };
 }
 
+export interface ItemsProgrammItem extends Schema.Component {
+  collectionName: 'components_items_programm_items';
+  info: {
+    displayName: 'ProgrammItem';
+    icon: 'filter';
+    description: '';
+  };
+  attributes: {
+    day: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    times: Attribute.Component<'items.programm-time', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface ItemsProgrammTime extends Schema.Component {
+  collectionName: 'components_items_programm_times';
+  info: {
+    displayName: 'ProgrammTime';
+    icon: 'clock';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    time: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -86,6 +130,8 @@ declare module '@strapi/types' {
       'items.file': ItemsFile;
       'items.files-grid-item': ItemsFilesGridItem;
       'items.orgs-item': ItemsOrgsItem;
+      'items.programm-item': ItemsProgrammItem;
+      'items.programm-time': ItemsProgrammTime;
     }
   }
 }
