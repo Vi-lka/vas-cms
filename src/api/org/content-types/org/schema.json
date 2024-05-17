@@ -4,18 +4,36 @@
   "info": {
     "singularName": "org",
     "pluralName": "orgs",
-    "displayName": "Orgs"
+    "displayName": "Orgs",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "items": {
+    "main": {
       "type": "component",
       "repeatable": true,
       "component": "items.orgs-item",
-      "required": true
+      "required": true,
+      "max": 4
+    },
+    "support": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.orgs-item",
+      "required": false
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.orgs-item"
+    },
+    "co_organizers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.orgs-item"
     }
   }
 }

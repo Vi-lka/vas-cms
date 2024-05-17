@@ -987,12 +987,23 @@ export interface ApiOrgOrg extends Schema.SingleType {
     singularName: 'org';
     pluralName: 'orgs';
     displayName: 'Orgs';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    items: Attribute.Component<'items.orgs-item', true> & Attribute.Required;
+    main: Attribute.Component<'items.orgs-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          max: 4;
+        },
+        number
+      >;
+    support: Attribute.Component<'items.orgs-item', true>;
+    partners: Attribute.Component<'items.orgs-item', true>;
+    co_organizers: Attribute.Component<'items.orgs-item', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
