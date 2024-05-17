@@ -4,7 +4,8 @@
   "info": {
     "singularName": "additional-page",
     "pluralName": "additional-pages",
-    "displayName": "AdditionalPage"
+    "displayName": "AdditionalPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,15 @@
     "slug": {
       "type": "uid",
       "targetField": "title",
+      "required": true
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.text-block",
+        "content.files",
+        "content.image-slider"
+      ],
       "required": true
     }
   }

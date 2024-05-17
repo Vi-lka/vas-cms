@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_files",
+  "info": {
+    "displayName": "Files",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "files": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.file",
+      "required": true,
+      "min": 1
+    }
+  }
+}

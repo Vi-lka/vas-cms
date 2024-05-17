@@ -1,5 +1,59 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ContentFiles extends Schema.Component {
+  collectionName: 'components_content_files';
+  info: {
+    displayName: 'Files';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    files: Attribute.Component<'items.file', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface ContentImageSlider extends Schema.Component {
+  collectionName: 'components_content_image_sliders';
+  info: {
+    displayName: 'ImageSlider';
+    icon: 'landscape';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    images: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ContentTextBlock extends Schema.Component {
+  collectionName: 'components_content_text_blocks';
+  info: {
+    displayName: 'TextBlock';
+    icon: 'medium';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    text: Attribute.Blocks & Attribute.Required;
+  };
+}
+
 export interface ItemsAdditionalPlaceInfo extends Schema.Component {
   collectionName: 'components_items_additional_place_infos';
   info: {
@@ -13,7 +67,7 @@ export interface ItemsAdditionalPlaceInfo extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-    image: Attribute.Media;
+    image: Attribute.Media & Attribute.Required;
     description: Attribute.Text &
       Attribute.SetMinMaxLength<{
         maxLength: 255;
@@ -152,6 +206,9 @@ export interface ItemsProgrammTime extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'content.files': ContentFiles;
+      'content.image-slider': ContentImageSlider;
+      'content.text-block': ContentTextBlock;
       'items.additional-place-info': ItemsAdditionalPlaceInfo;
       'items.directions-item': ItemsDirectionsItem;
       'items.file': ItemsFile;

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_text_blocks",
+  "info": {
+    "displayName": "TextBlock",
+    "icon": "medium",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "text": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

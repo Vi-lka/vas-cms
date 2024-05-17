@@ -866,6 +866,7 @@ export interface ApiAdditionalPageAdditionalPage extends Schema.CollectionType {
     singularName: 'additional-page';
     pluralName: 'additional-pages';
     displayName: 'AdditionalPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -877,6 +878,10 @@ export interface ApiAdditionalPageAdditionalPage extends Schema.CollectionType {
         maxLength: 255;
       }>;
     slug: Attribute.UID<'api::additional-page.additional-page', 'title'> &
+      Attribute.Required;
+    content: Attribute.DynamicZone<
+      ['content.text-block', 'content.files', 'content.image-slider']
+    > &
       Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1021,16 +1026,6 @@ export interface ApiPlacePlace extends Schema.SingleType {
         maxLength: 255;
       }>;
     description: Attribute.Blocks;
-    titleAboutCity: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    imageAboutCity: Attribute.Media & Attribute.Required;
-    descriptionAboutCity: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
     additionalLinks: Attribute.Component<'items.additional-place-info', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
