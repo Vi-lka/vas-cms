@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_items_contacts_people",
+  "info": {
+    "displayName": "ContactsPerson",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 255
+    },
+    "tel": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

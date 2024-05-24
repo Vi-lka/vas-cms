@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_items_committee_items",
+  "info": {
+    "displayName": "CommitteeItem",
+    "icon": "shield",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "persons": {
+      "displayName": "PersonItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "items.person-item",
+      "required": true,
+      "min": 1
+    }
+  }
+}

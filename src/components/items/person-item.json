@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_items_person_items",
+  "info": {
+    "displayName": "PersonItem",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "maxLength": 255
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

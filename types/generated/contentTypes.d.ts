@@ -901,6 +901,85 @@ export interface ApiAdditionalPageAdditionalPage extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommitteeCommittee extends Schema.SingleType {
+  collectionName: 'committees';
+  info: {
+    singularName: 'committee';
+    pluralName: 'committees';
+    displayName: 'Committee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    items: Attribute.Component<'items.committee-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::committee.committee',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::committee.committee',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Schema.SingleType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    items: Attribute.Component<'items.contacts-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDirectionDirection extends Schema.SingleType {
   collectionName: 'directions';
   info: {
@@ -1115,6 +1194,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::additional-page.additional-page': ApiAdditionalPageAdditionalPage;
+      'api::committee.committee': ApiCommitteeCommittee;
+      'api::contact.contact': ApiContactContact;
       'api::direction.direction': ApiDirectionDirection;
       'api::material.material': ApiMaterialMaterial;
       'api::org.org': ApiOrgOrg;

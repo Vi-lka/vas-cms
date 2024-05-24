@@ -80,6 +80,92 @@ export interface ItemsAdditionalPlaceInfo extends Schema.Component {
   };
 }
 
+export interface ItemsCommitteeItem extends Schema.Component {
+  collectionName: 'components_items_committee_items';
+  info: {
+    displayName: 'CommitteeItem';
+    icon: 'shield';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    persons: Attribute.Component<'items.person-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
+export interface ItemsContactsItem extends Schema.Component {
+  collectionName: 'components_items_contacts_items';
+  info: {
+    displayName: 'ContactsItem';
+    icon: 'book';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    places: Attribute.Component<'items.contacts-place', true>;
+    persons: Attribute.Component<'items.contacts-person', true>;
+  };
+}
+
+export interface ItemsContactsPerson extends Schema.Component {
+  collectionName: 'components_items_contacts_people';
+  info: {
+    displayName: 'ContactsPerson';
+    icon: 'user';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    tel: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    email: Attribute.Email;
+  };
+}
+
+export interface ItemsContactsPlace extends Schema.Component {
+  collectionName: 'components_items_contacts_places';
+  info: {
+    displayName: 'ContactsPlace';
+    icon: 'book';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    address: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    link: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+  };
+}
+
 export interface ItemsDirectionsItem extends Schema.Component {
   collectionName: 'components_items_directions_items';
   info: {
@@ -159,6 +245,27 @@ export interface ItemsOrgsItem extends Schema.Component {
   };
 }
 
+export interface ItemsPersonItem extends Schema.Component {
+  collectionName: 'components_items_person_items';
+  info: {
+    displayName: 'PersonItem';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    image: Attribute.Media;
+  };
+}
+
 export interface ItemsProgrammItem extends Schema.Component {
   collectionName: 'components_items_programm_items';
   info: {
@@ -210,10 +317,15 @@ declare module '@strapi/types' {
       'content.image-slider': ContentImageSlider;
       'content.text-block': ContentTextBlock;
       'items.additional-place-info': ItemsAdditionalPlaceInfo;
+      'items.committee-item': ItemsCommitteeItem;
+      'items.contacts-item': ItemsContactsItem;
+      'items.contacts-person': ItemsContactsPerson;
+      'items.contacts-place': ItemsContactsPlace;
       'items.directions-item': ItemsDirectionsItem;
       'items.file': ItemsFile;
       'items.files-grid-item': ItemsFilesGridItem;
       'items.orgs-item': ItemsOrgsItem;
+      'items.person-item': ItemsPersonItem;
       'items.programm-item': ItemsProgrammItem;
       'items.programm-time': ItemsProgrammTime;
     }

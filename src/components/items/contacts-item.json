@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_items_contacts_items",
+  "info": {
+    "displayName": "ContactsItem",
+    "icon": "book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false,
+      "maxLength": 255
+    },
+    "places": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.contacts-place"
+    },
+    "persons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "items.contacts-person"
+    }
+  }
+}

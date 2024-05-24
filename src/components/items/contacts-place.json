@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_items_contacts_places",
+  "info": {
+    "displayName": "ContactsPlace",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "address": {
+      "type": "text",
+      "maxLength": 255
+    },
+    "link": {
+      "type": "string",
+      "regex": "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%.,_\\+~#=]{1,256}(?:.[a-zA-Z0-9()]{1,6})\\b(?:[-a-zA-Z0-9()@:%_\\+.,~#?&\\/=]*)$",
+      "maxLength": 255
+    }
+  }
+}
