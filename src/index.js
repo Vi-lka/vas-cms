@@ -1,13 +1,30 @@
 'use strict';
 
 module.exports = {
+  
   /**
    * An asynchronous register function that runs before
    * your application is initialized.
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }) {
+    const extensionService = strapi.plugin('graphql').service('extension');
+
+    extensionService.use(({ nexus }) => ({
+      types: [
+        nexus.extendType({
+          type: 'UsersPermissionsMe',
+          definition(t) {
+            // here define fields you need
+            t.boolean('subscribed');
+            t.boolean('report');
+            t.json('metadata')
+          },
+        }),
+      ]
+    }));
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
