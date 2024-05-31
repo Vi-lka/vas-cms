@@ -852,6 +852,9 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
   attributes: {
     text: Attribute.Blocks & Attribute.Required;
+    content: Attribute.DynamicZone<
+      ['content.files', 'content.image-slider', 'content.text-block']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

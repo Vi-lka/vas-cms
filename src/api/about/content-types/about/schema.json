@@ -15,6 +15,14 @@
     "text": {
       "type": "blocks",
       "required": true
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.files",
+        "content.image-slider",
+        "content.text-block"
+      ]
     }
   }
 }
