@@ -870,6 +870,37 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiAbstractAbstract extends Schema.SingleType {
+  collectionName: 'abstracts';
+  info: {
+    singularName: 'abstract';
+    pluralName: 'abstracts';
+    displayName: 'Abstract';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.Blocks;
+    file: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::abstract.abstract',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::abstract.abstract',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAdditionalPageAdditionalPage extends Schema.CollectionType {
   collectionName: 'additional_pages';
   info: {
@@ -1203,6 +1234,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::abstract.abstract': ApiAbstractAbstract;
       'api::additional-page.additional-page': ApiAdditionalPageAdditionalPage;
       'api::committee.committee': ApiCommitteeCommittee;
       'api::contact.contact': ApiContactContact;
