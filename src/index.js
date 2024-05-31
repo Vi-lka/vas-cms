@@ -19,7 +19,8 @@ module.exports = {
             // here define fields you need
             t.boolean('subscribed');
             t.boolean('report');
-            t.json('metadata')
+            t.json('metadata');
+            t.string('status');
             t.string('file', {
               type: 'UploadFileEntityResponse',
               resolve: async (root, args) => {

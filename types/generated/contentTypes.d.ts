@@ -815,6 +815,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     metadata: Attribute.JSON;
     report: Attribute.Boolean;
     file: Attribute.Media;
+    status: Attribute.Enumeration<
+      [
+        '\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0430',
+        '\u043E\u0434\u043E\u0431\u0440\u0435\u043D\u0430',
+        '\u043D\u0430 \u0434\u043E\u0440\u0430\u0431\u043E\u0442\u043A\u0435'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

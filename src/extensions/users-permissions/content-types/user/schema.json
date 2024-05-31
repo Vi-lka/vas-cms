@@ -75,11 +75,20 @@
       "type": "boolean"
     },
     "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "получена",
+        "одобрена",
+        "на доработке"
+      ]
     }
   }
 }
