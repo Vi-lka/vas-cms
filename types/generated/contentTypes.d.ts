@@ -822,6 +822,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         '\u043D\u0430 \u0434\u043E\u0440\u0430\u0431\u043E\u0442\u043A\u0435'
       ]
     >;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

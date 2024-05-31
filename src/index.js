@@ -36,6 +36,21 @@ module.exports = {
                 })
               },
             });
+            t.string('image', {
+              type: 'UploadFileEntityResponse',
+              resolve: async (root, args) => {
+                const userData = await strapi.db.query('plugin::users-permissions.user').findOne({
+                  select: [],
+                  where: { id: root.id },
+                  populate: { image: true },
+                });
+                const { toEntityResponse } = strapi.plugin('graphql').service('format').returnTypes;
+                return toEntityResponse(userData.image ?? null, {
+                  args,
+                  resourceUID: "plugin::uploads.uploads",
+                })
+              },
+            });
           },
         }),
       ]
