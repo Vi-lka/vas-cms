@@ -17,7 +17,8 @@ module.exports = {
           type: 'UsersPermissionsMe',
           definition(t) {
             // here define fields you need
-            t.boolean('subscribed');
+            t.boolean('subscribedContent');
+            t.boolean('subscribedReport');
             t.boolean('report');
             t.json('metadata');
             t.string('status');

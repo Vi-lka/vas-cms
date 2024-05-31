@@ -811,7 +811,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    subscribed: Attribute.Boolean;
+    subscribedContent: Attribute.Boolean;
     metadata: Attribute.JSON;
     report: Attribute.Boolean;
     file: Attribute.Media;
@@ -823,6 +823,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       ]
     >;
     image: Attribute.Media;
+    subscribedReport: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

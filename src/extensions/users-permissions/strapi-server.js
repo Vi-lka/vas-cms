@@ -9,7 +9,8 @@ module.exports = (plugin) => {
     const updatedUserData = {
       // ...ctx.request.body,
       username: ctx.request.body.username,
-      subscribed: ctx.request.body.subscribed,
+      subscribedContent: ctx.request.body.subscribedContent,
+      subscribedReport: ctx.request.body.subscribedReport,
       report: ctx.request.body.report,
       metadata: ctx.request.body.metadata
       // email: ctx.state.user.email || ctx.request.body.email,
@@ -21,7 +22,7 @@ module.exports = (plugin) => {
         data: updatedUserData,
       })
       .then((res) => {
-        ctx.response.body = res;
+        ctx.response.body = updatedUserData;
         ctx.response.status = 200;
       });
     } catch (error) {

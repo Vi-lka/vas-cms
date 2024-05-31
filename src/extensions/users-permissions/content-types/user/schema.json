@@ -65,7 +65,7 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "subscribed": {
+    "subscribedContent": {
       "type": "boolean"
     },
     "metadata": {
@@ -91,11 +91,15 @@
       ]
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "subscribedReport": {
+      "type": "boolean"
     }
   }
 }
