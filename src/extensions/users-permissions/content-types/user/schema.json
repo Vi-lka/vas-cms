@@ -73,6 +73,13 @@
     },
     "report": {
       "type": "boolean"
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

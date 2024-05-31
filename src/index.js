@@ -20,6 +20,21 @@ module.exports = {
             t.boolean('subscribed');
             t.boolean('report');
             t.json('metadata')
+            t.string('file', {
+              type: 'UploadFileEntityResponse',
+              resolve: async (root, args) => {
+                const userData = await strapi.db.query('plugin::users-permissions.user').findOne({
+                  select: [],
+                  where: { id: root.id },
+                  populate: { file: true },
+                });
+                const { toEntityResponse } = strapi.plugin('graphql').service('format').returnTypes;
+                return toEntityResponse(userData.file ?? null, {
+                  args,
+                  resourceUID: "plugin::uploads.uploads",
+                })
+              },
+            });
           },
         }),
       ]

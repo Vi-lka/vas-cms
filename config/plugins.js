@@ -16,6 +16,14 @@ module.exports = ({ env }) => ({
         // keep in mind that graphql playground has to be enabled
         enabled: process.env.NODE_ENV === "production" ? false : true,
     },
+    upload: {
+      config: {
+        provider: 'local',
+        providerOptions: {
+          sizeLimit: 5000000,
+        },
+      },
+    },
     'drag-drop-content-types': {
         enabled: true
     },

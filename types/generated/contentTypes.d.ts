@@ -814,6 +814,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     subscribed: Attribute.Boolean;
     metadata: Attribute.JSON;
     report: Attribute.Boolean;
+    file: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
