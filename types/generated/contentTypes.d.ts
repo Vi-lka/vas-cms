@@ -821,7 +821,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         '\u043E\u0434\u043E\u0431\u0440\u0435\u043D\u0430',
         '\u043D\u0430 \u0434\u043E\u0440\u0430\u0431\u043E\u0442\u043A\u0435'
       ]
-    >;
+    > &
+      Attribute.DefaultTo<'\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0430'>;
     image: Attribute.Media;
     subscribedReport: Attribute.Boolean;
     createdAt: Attribute.DateTime;
