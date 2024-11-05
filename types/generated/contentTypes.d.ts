@@ -825,6 +825,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.DefaultTo<'\u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0430'>;
     image: Attribute.Media;
     subscribedReport: Attribute.Boolean;
+    statusComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

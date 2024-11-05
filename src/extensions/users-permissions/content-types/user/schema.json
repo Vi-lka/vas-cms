@@ -101,6 +101,9 @@
     },
     "subscribedReport": {
       "type": "boolean"
+    },
+    "statusComment": {
+      "type": "text"
     }
   }
 }
