@@ -1108,6 +1108,41 @@ export interface ApiMaterialMaterial extends Schema.SingleType {
   };
 }
 
+export interface ApiNotificationNotification extends Schema.SingleType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 255;
+      }>;
+    description: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrgOrg extends Schema.SingleType {
   collectionName: 'orgs';
   info: {
@@ -1247,6 +1282,7 @@ declare module '@strapi/types' {
       'api::contact.contact': ApiContactContact;
       'api::direction.direction': ApiDirectionDirection;
       'api::material.material': ApiMaterialMaterial;
+      'api::notification.notification': ApiNotificationNotification;
       'api::org.org': ApiOrgOrg;
       'api::place.place': ApiPlacePlace;
       'api::programm.programm': ApiProgrammProgramm;
