@@ -77,7 +77,7 @@ module.exports = {
 
         const existingData = await strapi.entityService.findOne("plugin::users-permissions.user", id)
 
-        if (data.status !== existingData.status) {
+        if (existingData.subscribedReport && (data.status !== undefined) && (data.status !== existingData.status)) {
           const statusCommentChanged = data.statusComment && (data.statusComment.length > 1) && (existingData.statusComment !== data.statusComment)
 
           const emailTemplate = {
