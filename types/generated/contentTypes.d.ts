@@ -1256,6 +1256,36 @@ export interface ApiProgrammProgramm extends Schema.SingleType {
   };
 }
 
+export interface ApiRegistrationRegistration extends Schema.SingleType {
+  collectionName: 'registrations';
+  info: {
+    singularName: 'registration';
+    pluralName: 'registrations';
+    displayName: 'Registration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    enabled: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::registration.registration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::registration.registration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1286,6 +1316,7 @@ declare module '@strapi/types' {
       'api::org.org': ApiOrgOrg;
       'api::place.place': ApiPlacePlace;
       'api::programm.programm': ApiProgrammProgramm;
+      'api::registration.registration': ApiRegistrationRegistration;
     }
   }
 }
