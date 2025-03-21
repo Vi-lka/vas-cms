@@ -1071,6 +1071,28 @@ export interface ApiDirectionDirection extends Schema.SingleType {
   };
 }
 
+export interface ApiFeeFee extends Schema.SingleType {
+  collectionName: 'fees';
+  info: {
+    singularName: 'fee';
+    pluralName: 'fees';
+    displayName: 'Fee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::fee.fee', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::fee.fee', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMaterialMaterial extends Schema.SingleType {
   collectionName: 'materials';
   info: {
@@ -1311,6 +1333,7 @@ declare module '@strapi/types' {
       'api::committee.committee': ApiCommitteeCommittee;
       'api::contact.contact': ApiContactContact;
       'api::direction.direction': ApiDirectionDirection;
+      'api::fee.fee': ApiFeeFee;
       'api::material.material': ApiMaterialMaterial;
       'api::notification.notification': ApiNotificationNotification;
       'api::org.org': ApiOrgOrg;
